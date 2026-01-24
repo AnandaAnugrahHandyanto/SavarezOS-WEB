@@ -1,0 +1,269 @@
+<nav
+  id="navbar"
+  class="
+    fixed top-0 left-0 w-full z-50
+    backdrop-blur-xl
+    transition-all duration-300
+    bg-white/70 dark:bg-gray-900/60
+    border-b border-gray-200/60 dark:border-gray-800/60
+  "
+>
+
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <a
+      href="/"
+      class="text-xl font-bold tracking-wide
+      text-blue-600 dark:text-blue-400
+      hover:opacity-90 transition"
+    >
+      SavarezOS
+    </a>
+
+
+    <div class="hidden md:flex space-x-8 font-medium items-center">
+
+      <a href="/" class="nav-link" data-page="/">Home</a>
+      <a href="/download" class="nav-link" data-page="/download">Download</a>
+      <a href="/docs" class="nav-link" data-page="/docs">Docs</a>
+      <a href="/about" class="nav-link" data-page="/about">About</a>
+
+
+      <button
+        id="theme-toggle"
+        class="
+          p-2 rounded-lg
+          hover:bg-gray-200 dark:hover:bg-gray-800
+          transition
+        "
+        aria-label="Toggle theme"
+      >
+
+        <svg
+          id="sun"
+          class="w-5 h-5 hidden text-yellow-400"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M10 3.22l.61 1.87a1 1 0 00.95.69h1.97l-1.6 1.16a1 1 0 00-.36 1.11l.61 1.87-1.6-1.16a1 1 0 00-1.18 0l-1.6 1.16.61-1.87a1 1 0 00-.36-1.11L6.47 5.78h1.97a1 1 0 00.95-.69L10 3.22z"/>
+        </svg>
+
+        <svg
+          id="moon"
+          class="w-5 h-5 text-gray-700 dark:text-gray-200"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M17.29 13.46A8 8 0 016.54 2.71a8 8 0 1010.75 10.75z"/>
+        </svg>
+
+      </button>
+
+
+      <a
+        href="https://github.com/AnandaAnugrahHandyanto/SavarezOS_Debian-Based"
+        target="_blank"
+        class="
+          border border-blue-400/40
+          px-4 py-1.5 rounded-lg
+          text-blue-600 dark:text-blue-400
+          hover:bg-blue-600 hover:text-white
+          transition
+        "
+      >
+        GitHub
+      </a>
+
+    </div>
+
+
+    <button
+      id="menu-btn"
+      class="md:hidden text-gray-700 dark:text-gray-300"
+      aria-label="Toggle menu"
+    >
+
+      <svg id="icon-open"
+        class="h-7 w-7"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor">
+
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+
+      <svg id="icon-close"
+        class="h-7 w-7 hidden"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor">
+
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M6 18L18 6M6 6l12 12" />
+      </svg>
+
+    </button>
+
+  </div>
+
+
+  <div
+    id="mobile-menu"
+    class="
+      hidden md:hidden
+      bg-white/95 dark:bg-gray-900/95
+      backdrop-blur-xl
+      border-t border-gray-200 dark:border-gray-800
+      transition-all
+    "
+  >
+
+    <div class="px-6 py-6 flex flex-col space-y-5 font-medium">
+
+      <a href="/" class="mobile-link">Home</a>
+      <a href="/download" class="mobile-link">Download</a>
+      <a href="/docs" class="mobile-link">Docs</a>
+      <a href="/about" class="mobile-link">About</a>
+
+      <a
+        href="https://github.com/AnandaAnugrahHandyanto/SavarezOS_Debian-Based"
+        target="_blank"
+        class="text-blue-600 dark:text-blue-400 font-semibold"
+      >
+        GitHub
+      </a>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    const openIcon = document.getElementById("icon-open");
+    const closeIcon = document.getElementById("icon-close");
+    const navbar = document.getElementById("navbar");
+
+    const toggle = document.getElementById("theme-toggle");
+    const sun = document.getElementById("sun");
+    const moon = document.getElementById("moon");
+
+    function closeMenu() {
+      menu.classList.add("hidden");
+      openIcon.classList.remove("hidden");
+      closeIcon.classList.add("hidden");
+    }
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+      openIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+    });
+
+
+    document.querySelectorAll(".mobile-link").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 40) {
+        navbar.classList.add("shadow-xl");
+      } else {
+        navbar.classList.remove("shadow-xl");
+      }
+
+    });
+
+
+    const path = window.location.pathname.replace(/\\/$/, "");
+
+    document.querySelectorAll(".nav-link").forEach(link => {
+
+      const page = link.dataset.page.replace(/\\/$/, "");
+
+      if (page === path || (page === "/" && path === "")) {
+        link.classList.add("active");
+      }
+
+    });
+
+
+    function updateIcon() {
+
+      if (document.documentElement.classList.contains("dark")) {
+        sun.classList.remove("hidden");
+        moon.classList.add("hidden");
+      } else {
+        sun.classList.add("hidden");
+        moon.classList.remove("hidden");
+      }
+
+    }
+
+    updateIcon();
+
+
+    toggle.addEventListener("click", () => {
+
+      document.documentElement.classList.toggle("dark");
+
+      const theme = document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+
+      localStorage.setItem("theme", theme);
+
+      updateIcon();
+
+    });
+
+  });
+</script>
+
+<style>
+
+  .nav-link {
+    position: relative;
+    color: inherit;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: #2563eb;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #2563eb;
+    transition: width 0.3s;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+
+  .mobile-link {
+    font-size: 1.1rem;
+    color: inherit;
+    transition: color 0.3s;
+  }
+
+  .mobile-link:hover {
+    color: #2563eb;
+  }
+
+</style>
