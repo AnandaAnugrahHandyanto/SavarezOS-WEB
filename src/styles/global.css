@@ -17,7 +17,7 @@
 
   body {
     @apply antialiased text-gray-400 bg-[#020203];
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
     overflow-x: hidden;
   }
 }
@@ -28,7 +28,6 @@
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   border: 1px solid var(--liquid-border);
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.7);
 }
 
 .liquid-card {
@@ -36,13 +35,13 @@
          hover:border-blue-500/40 hover:bg-white/[0.03] hover:-translate-y-2;
 }
 
-/* Ambient Physics Background */
+/* Portal Background Orbit */
 .portal-orbit {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1.5px solid rgba(59, 130, 246, 0.05);
+  border: 1.5px solid rgba(59, 130, 246, 0.04);
   border-radius: 50%;
   animation: liquid-pulse 15s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   z-index: 0;
