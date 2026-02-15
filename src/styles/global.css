@@ -6,8 +6,8 @@
   :root {
     --brand-blue: #3b82f6;
     --brand-dark: #020203;
-    --glass-bg: rgba(255, 255, 255, 0.01);
-    --glass-border: rgba(255, 255, 255, 0.07);
+    --liquid-bg: rgba(255, 255, 255, 0.015);
+    --liquid-border: rgba(255, 255, 255, 0.08);
   }
 
   html {
@@ -17,21 +17,21 @@
 
   body {
     @apply antialiased text-gray-400 bg-[#020203];
-    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 }
 
-/* Liquid Glass Core - Precision Blur */
-.liquid-glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid var(--glass-border);
+/* Precision Liquid Glass */
+.liquid-panel {
+  background: var(--liquid-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--liquid-border);
 }
 
 .liquid-card {
-  @apply liquid-glass rounded-[2rem] p-8 md:p-12 transition-all duration-700 
+  @apply liquid-panel rounded-[2.5rem] p-10 md:p-14 transition-all duration-700 
          hover:border-blue-500/40 hover:bg-white/[0.03] hover:-translate-y-2;
 }
 
@@ -43,18 +43,18 @@
   transform: translate(-50%, -50%);
   border: 1px solid rgba(59, 130, 246, 0.05);
   border-radius: 50%;
-  animation: liquid-pulse 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: liquid-pulse 15s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  z-index: 0;
 }
 
 @keyframes liquid-pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
-  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.3; }
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.05; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.2; }
 }
 
-/* Responsive Reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px);
   transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
