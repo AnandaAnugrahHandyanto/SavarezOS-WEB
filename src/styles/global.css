@@ -25,14 +25,14 @@
 /* Precision Liquid Glass */
 .liquid-panel {
   background: var(--liquid-bg);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
   border: 1px solid var(--liquid-border);
 }
 
 .liquid-card {
   @apply liquid-panel rounded-[2.5rem] p-10 md:p-14 transition-all duration-700 
-         hover:border-blue-500/40 hover:bg-white/[0.03] hover:-translate-y-2;
+         hover:border-blue-500/40 hover:bg-white/[0.03] hover:-translate-y-2 shadow-2xl;
 }
 
 /* Background Portal Physics */
